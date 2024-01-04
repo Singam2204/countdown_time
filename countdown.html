@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Application</title>
+</head>
+<style>
+    div {
+        text-align: center;
+        font-size: 40px;
+        border: 3px solid black;
+        margin: 200px;
+        background-color: rgb(216, 178, 106);
+        font-family:arial;
+
+    }
+    body {
+        background-color: rgb(203, 90, 90);
+    }
+</style>
+
+<body>
+    <div>
+        <h3 id="time"></h3>
+    </div>
+</body>
+<script>
+
+    let CountDate = new Date("Jan 7, 2024 13:00:00").getTime();
+    let x = setInterval(function () {
+        let present = new Date().getTime();
+        let time = CountDate - present;
+        let days = Math.floor(time / (1000 * 24 * 60 * 60));
+        let hours = Math.floor((time % (1000 * 24 * 60 * 60)) / (1000 * 60 * 60));
+        let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((time % (1000 * 60)) / 1000);
+
+        if (time < 0) {
+            clearInterval(x);
+            document.getElementById("time").innerHTML = "This Countdown has been done";
+        }
+
+        document.getElementById("time").innerHTML = days + "d: " + hours + "h: "
+            + minutes + "m: " + seconds + "s";
+    }, 1000);
+</script>
+
+</html>
